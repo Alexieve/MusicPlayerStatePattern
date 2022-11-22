@@ -9,9 +9,9 @@ class MusicPlayer;
  */
 class PlayerState {
 public:
-	enum class Type { STOPPED, PLAYING, PAUSED };
+	enum class Type {STOPPED, PLAYING, PAUSED };
 
-	PlayerState(MusicPlayer* p): player_{ p } {}
+	PlayerState(MusicPlayer* p): player_{p} {}
 	virtual ~PlayerState() = default;
 
 	virtual void process() = 0;

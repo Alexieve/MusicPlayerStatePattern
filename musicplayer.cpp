@@ -8,18 +8,13 @@
 using namespace std;
 
 MusicPlayer::MusicPlayer() {
-	// states_ = {
-	//   { PlayerState::Type::PAUSED, new PausedState(this) },
-	//   { PlayerState::Type::PLAYING, new PlayingState(this) },
-	//   { PlayerState::Type::STOPPED, new StoppedState(this) },
-	// };
 	cout << "MusicPlayer is started. Hello!\n";
 	changeState(PlayerState::Type::STOPPED);
 }
 
 MusicPlayer::~MusicPlayer() {
 	cout << "MusicPlayer is closed. Bye!\n";
-	for ( auto& s : states_ ) {
+	for (auto& s : states_) {
 		cout << "  delete state " << s.second->name() << "\n";
 		delete s.second;
 	}
@@ -41,8 +36,8 @@ void MusicPlayer::changeState(const PlayerState::Type type) {
 	try {
 		currentState_ = states_.at(type);
 		return;
-	} catch ( const out_of_range& ) {
-		switch ( type ) {
+	} catch (const out_of_range&) {
+		switch (type) {
 			case PlayerState::Type::PAUSED:
 				states_[type] = new PausedState(this);
 				break;

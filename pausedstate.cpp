@@ -10,13 +10,12 @@ void PausedState::process() {
 	cout << "Player is " << name() << "...\n";
 	cout << "-----------------------------\n";
 
-	char c = ' ';
-	while ( c == ' ' ) {
+	char choice = ' ';
+	while ( choice == ' ' ) {
 		cout << "  Play [P]  Stop [S]  Quit [Q]\n";
 		cout << "  Choice: ";
-		cin >> c;
-
-		switch ( toupper(c) ) {
+		cin >> choice;
+		switch (toupper(choice)) {
 			case 'P':
 				player_->changeState(PlayerState::Type::PLAYING);
 				break;
@@ -27,7 +26,7 @@ void PausedState::process() {
 				player_->close();
 				break;
 			default:
-				c = ' ';
+				choice = ' ';
 				break;
 		}
 	}

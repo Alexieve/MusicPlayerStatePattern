@@ -1,11 +1,12 @@
 #pragma once
 
 #include "playerstate.h"
+using namespace std;
 
 class PausedState : public PlayerState {
 public:
 	PausedState(MusicPlayer* p);
 
-	void process() override;
-	std::string name() const override;
+	void process();
+	string name() const;
 };

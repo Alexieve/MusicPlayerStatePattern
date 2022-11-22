@@ -7,6 +7,6 @@ class StoppedState : public PlayerState{
 public:
   StoppedState(MusicPlayer* p);
 
-  void process() override;
-  string name() const override;
+  void process();
+  string name() const;
 };
