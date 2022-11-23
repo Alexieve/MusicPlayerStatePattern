@@ -5,6 +5,9 @@
 using namespace std;
 
 class MusicPlayer {
+private:
+	map<PlayerState::Type, PlayerState*> states;
+	PlayerState* currentState;
 public:
 	MusicPlayer();
 	~MusicPlayer();
@@ -12,8 +15,4 @@ public:
 	void run();
 	void close();
 	void changeState(const PlayerState::Type);
-
-private:
-	map<PlayerState::Type, PlayerState*> states_;
-	PlayerState* currentState_;
 };

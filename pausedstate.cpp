@@ -4,26 +4,26 @@
 #include <iostream>
 using namespace std;
 
-PausedState::PausedState(MusicPlayer* p): PlayerState{ p } {}
+PausedState::PausedState(MusicPlayer* p): PlayerState{p} {}
 
 void PausedState::process() {
 	cout << "Player is " << name() << "...\n";
 	cout << "-----------------------------\n";
 
 	char choice = ' ';
-	while ( choice == ' ' ) {
+	while (choice == ' ') {
 		cout << "  Play [P]  Stop [S]  Quit [Q]\n";
 		cout << "  Choice: ";
 		cin >> choice;
 		switch (toupper(choice)) {
 			case 'P':
-				player_->changeState(PlayerState::Type::PLAYING);
+				player->changeState(PlayerState::Type::PLAYING);
 				break;
 			case 'S':
-				player_->changeState(PlayerState::Type::STOPPED);
+				player->changeState(PlayerState::Type::STOPPED);
 				break;
 			case 'Q':
-				player_->close();
+				player->close();
 				break;
 			default:
 				choice = ' ';

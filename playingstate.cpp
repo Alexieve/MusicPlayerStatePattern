@@ -17,13 +17,13 @@ void PlayingState::process() {
 		cin >> choice;
 		switch (toupper(choice)) {
 			case 'P':
-				player_->changeState(PlayerState::Type::PAUSED);
+				player->changeState(PlayerState::Type::PAUSED);
 				break;
 			case 'S':
-				player_->changeState(PlayerState::Type::STOPPED);
+				player->changeState(PlayerState::Type::STOPPED);
 				break;
 			case 'Q':
-				player_->close();
+				player->close();
 				break;
 			default:
 				choice = ' ';

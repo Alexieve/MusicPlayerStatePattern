@@ -14,40 +14,39 @@ MusicPlayer::MusicPlayer() {
 
 MusicPlayer::~MusicPlayer() {
 	cout << "MusicPlayer is closed. Bye!\n";
-	for (auto& s : states_) {
+	for (auto& s : states) {
 		cout << "  delete state " << s.second->name() << "\n";
 		delete s.second;
 	}
 }
 
 void MusicPlayer::run() {
-	while ( currentState_ ) {
-		currentState_->process();
-	}
+	while ( currentState )
+		currentState->process();
 }
 
 void MusicPlayer::close() {
-	currentState_ = nullptr;
+	currentState = nullptr;
 }
 
 /** Change current state to a state specified by type
  */
 void MusicPlayer::changeState(const PlayerState::Type type) {
 	try {
-		currentState_ = states_.at(type);
+		currentState = states.at(type);
 		return;
 	} catch (const out_of_range&) {
 		switch (type) {
 			case PlayerState::Type::PAUSED:
-				states_[type] = new PausedState(this);
+				states[type] = new PausedState(this);
 				break;
 			case PlayerState::Type::PLAYING:
-				states_[type] = new PlayingState(this);
+				states[type] = new PlayingState(this);
 				break;
 			case PlayerState::Type::STOPPED:
-				states_[type] = new StoppedState(this);
+				states[type] = new StoppedState(this);
 				break;
 		}
 	}
-	currentState_ = states_[type];
+	currentState = states[type];
 }
